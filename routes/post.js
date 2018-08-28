@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 const User = require('../models/Post');
-const Profile = require('../models/Profile');
 
 router.get('/', (req, res) => {
     res.send('This is the POST route!!');
@@ -14,11 +12,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
    
     const newPost = new Post({
-        user: req.user.id, //Get user from id
+        user: req.body.user,
         text: req.body.text,
         image: req.body.image,
-        name: req.body.name, //Get name from id
-        avatar: req.body.avatar     
+        name: req.body.name    
   });
 
   newPost.save().then(post => res.json(post));
