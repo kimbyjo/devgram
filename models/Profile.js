@@ -9,7 +9,6 @@ const ProfileSchema = new Schema({
   handle: {
     type: String,
     required: true,
-    //Handle must be unique to the specific user.
     unique: true,
     trim: true,
     max: 40
